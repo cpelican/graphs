@@ -132,29 +132,3 @@ class Heap:
             return first_child_index
         return second_child_index
 
-
-tree = {
-    'node_2': {'value': 3, 'children': []},
-    'node_3': {'value': 20, 'children': ['node_4', 'node_5']},
-    'node_4': {'value': 9, 'children': []},
-    'node_5': {'value': 1, 'children': ['node_6', 'node_7']},
-    'node_6': {'value': 7, 'children': []},
-    'node_7': {'value': 0, 'children': []},
-    'node_1': {'value': 10, 'children': ['node_2', 'node_3']},
-}
-
-# heap = Heap(tree)
-# heap.print()
-# heap.pop_min()
-# heap.print()
-# heap.pop_min()
-# heap.print()
-# heap.pop_min()
-# heap.print()
-# node_7, value: 0
-# node_2, value: 3
-# node_5, value: 1
-# node_1, value: 10
-# node_4, value: 9
-# node_3, value: 20
-# node_6, value: 7
