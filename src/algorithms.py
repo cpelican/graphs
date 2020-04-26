@@ -8,6 +8,7 @@
 # a  2  2  2  3
 # b  3  3  3  3
 
+#  clear explanation here: https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
 
 def levenshtein(str_1: str, str_2: str) -> int:
     """

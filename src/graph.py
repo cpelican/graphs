@@ -64,6 +64,18 @@ class Graph:
     def dijkstra(self, node_key, node_destination_key) -> List[Tuple[str, int]]:
         """
         Method that returns the shortest path between 2 nodes
+
+        We will store for each node its parent(previous_node)
+        We will store the distances from source node in a distances registry
+
+        1. At first the distance registry is set to infinite except for the source node
+        2. We will use a heap, in which we temporarily store the nodes to visit
+        3. The heap will allow us to retrieve the next node with minimal distance from source node
+        4. From each visited nodes, we will store its neighbors in the heap,
+           and if the distance we found is shorter than the previous one,
+           we update the distance and store it in the heap to be visited.
+        5. Finally, from the destination key, we will look in the parent registry,
+           and create the path with the distance registry
         """
         heap_instance = Heap()
         # set the distances registry
