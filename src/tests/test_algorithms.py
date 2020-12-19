@@ -5,6 +5,7 @@ from src.algorithms import levenshtein
 
 class TestAlgorithms:
     @pytest.mark.parametrize('str_1, str_2, expected', [
+        ('bao', 'cab', 2),
         ('abcdef', 'abcdef', 0),
         ('abcdef', 'azcdef', 1),
         ('abcdef', 'axydef', 2),
