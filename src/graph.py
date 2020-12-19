@@ -18,10 +18,10 @@ class Graph:
             repr += f'\n'
         return repr
 
-    def add_node(self, value):
+    def add_node(self, value: str):
         self.nodes[value] = {}
 
-    def add_edge(self, node_from, node_to, edge_value=0):
+    def add_edge(self, node_from: str, node_to: str, edge_value: int = 0):
         try:
             self.nodes[node_from][node_to] = edge_value
             if not self.is_directed:
@@ -29,7 +29,7 @@ class Graph:
         except KeyError:
             print('One of the nodes provided do not belong to the graph')
 
-    def remove_edge(self, node_from, node_to):
+    def remove_edge(self, node_from: str, node_to: str):
         try:
             self.nodes[node_from].pop(node_to)
             if not self.is_directed:
@@ -38,30 +38,34 @@ class Graph:
             print('One of the nodes provided do not belong to the graph')
 
     # BFS: Good way to find shortest path
-    def search_breadth_recursive(self, node_from, node_to):
+    def search_breadth_recursive(self, node_from: str, node_to: str):
         return GraphHelpers(self.nodes).rec_search_breadth([node_from], node_to, set())
 
-    def search_breadth(self, node_from, node_to):
+    def search_breadth(self, node_from: str, node_to: str):
         return GraphHelpers(self.nodes).search_breadth(node_from, node_to)
 
     # DFS: Good way to find if a path exists
-    def search_depth_recursive(self, node_from, node_to):
+    def search_depth_recursive(self, node_from: str, node_to: str):
         return GraphHelpers(self.nodes).rec_search_depth(node_from, node_to)
 
-    def search_depth(self, node_from, node_to):
+    def search_depth(self, node_from: str, node_to: str):
         return GraphHelpers(self.nodes).search_depth(node_from, node_to)
 
-    def get_all_paths(self, node_from, node_to) -> List[List[str]]:
+    def get_all_paths(self, node_from: str, node_to: str) -> List[List[str]]:
         """Method that finds all possible path between 2 nodes"""
         paths = []
         GraphHelpers(self.nodes).all_paths_rec_bread(set(), deque([(node_from, [])]), node_to, paths)
         return paths
 
-    def get_cycles(self, node_from) -> List[List[str]]:
+    def get_cycles(self, node_from: str) -> List[List[str]]:
+        """
+        :param node_from: The entry point
+        :return:
+        """
         cycles = GraphHelpers(self.nodes).get_cycle_dep(node_from, set())
         return cycles
 
-    def dijkstra(self, node_key, node_destination_key) -> List[Tuple[str, int]]:
+    def dijkstra(self, node_key: str, node_destination_key: str) -> List[Tuple[str, int]]:
         """
         Method that returns the shortest path between 2 nodes
 
@@ -117,7 +121,7 @@ class Graph:
         Definition: A bipartite graph is a graph that does not contains odd length cycles
 
         Doing a breadth search, we'll color each node with the opposite color from its parent
-        If the graph is bipartite, it has no odd lenght cycle,
+        If the graph is bipartite, it has no odd length cycle,
         therefore we should not find any child with the same color as its parent
         if not, it means the graph is not bipartite
         """
