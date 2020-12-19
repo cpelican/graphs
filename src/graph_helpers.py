@@ -97,3 +97,19 @@ class GraphHelpers:
                     self.all_paths_rec_bread(visited_set, queue, node_to, paths)
 
         visited_set.remove(current_node)
+
+    def is_bipartite(self, parent_node: str, colors: dict, bipartite=True) -> bool:
+        """Method that finds cycles in a graph coloring its nodes"""
+        is_b = bipartite or True
+        for child in self.nodes[parent_node]:
+            visited = colors.get(child) is not None
+            if not visited:
+                colors[child] = 0 if colors[parent_node] == 1 else 1
+            if colors.get(child) == colors.get(parent_node):
+                return False
+            if visited:
+                continue
+            is_b = self.is_bipartite(child, colors, is_b)
+            if is_b is False:
+                return False
+        return True

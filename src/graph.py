@@ -110,3 +110,38 @@ class Graph:
         path.insert(0, (node_key, 0))
 
         return path
+
+    def is_bipartite(self) -> bool:
+        """
+        Finds if graph is bipartite with coloring
+        Definition: A bipartite graph is a graph that does not contains odd length cycles
+
+        Doing a breadth search, we'll color each node with the opposite color from its parent
+        If the graph is bipartite, it has no odd lenght cycle,
+        therefore we should not find any child with the same color as its parent
+        if not, it means the graph is not bipartite
+        """
+        for source_node in self.nodes.keys():
+            colors = {source_node: 0}
+            if GraphHelpers(self.nodes).is_bipartite(source_node, colors, True) is False:
+                return False
+        return True
+
+    def is_bipartite_count_cycles(self) -> bool:
+        """
+        Finds if graph is bipartite counting its cycles
+        Definition: A bipartite graph is a graph that does not contains odd length cycles
+        """
+        for source_node in self.nodes.keys():
+            for cycle in self.get_cycles(source_node):
+                if (len(cycle) % 2) != 0:
+                    return False
+        return True
+
+    # TODO: remove me once done
+    # check that each subset has the same size as the other subset
+    # if it is not the case => there is a match
+    # for fulkerson
+    # find all path between 2 nodes.
+    # create a new graph with values === 0
+    # for each path, assign the minimum original value to the new graph
