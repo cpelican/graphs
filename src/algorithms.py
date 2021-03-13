@@ -20,6 +20,7 @@
 # b  3              b  3              b  3                  b  3
 
 #  clear explanation here: https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
+from typing import List, Tuple
 
 
 def levenshtein(str_1: str, str_2: str) -> int:
@@ -52,3 +53,34 @@ def levenshtein(str_1: str, str_2: str) -> int:
                 m[i][j] = last_min + 1
 
     return m[len(str_1)][len(str_2)]
+
+
+"""
+SORTING ALGORITHMS
+"""
+
+
+def selection_sort(values: List[int]) -> List[int]:
+    """
+    The selection sort has a sub list of remaining items to sort, and an other one of sorted items.
+    Complexity: O(nˆ2)
+    """
+    unsorted_list = [*values]
+    sorted_list = []
+    while len(unsorted_list) > 0:
+        min, unsorted_list = get_min(unsorted_list)
+        sorted_list.append(min)
+
+    return sorted_list
+
+
+def get_min(values: List[int]) -> Tuple[int, List[int]]:
+    min_index = 0
+    unsorted_list = [*values]
+    for i, value in enumerate(values):
+        if i == 0:
+            continue
+        if value < values[min_index]:
+            min_index = i
+    unsorted_list.pop(min_index)
+    return values[min_index], unsorted_list
