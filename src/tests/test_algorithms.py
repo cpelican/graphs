@@ -1,6 +1,6 @@
 import pytest
 
-from src.algorithms import levenshtein, selection_sort
+from src.algorithms import levenshtein, selection_sort, bubble_sort
 
 
 class TestAlgorithms:
@@ -22,3 +22,9 @@ class TestAlgorithms:
     ])
     def test_selection_sort(self, input, expected):
         assert selection_sort(input) == expected
+
+    @pytest.mark.parametrize('input, expected', [
+        ([9, 8, 23, 0, 0, 232, 1], [0, 0, 1, 8, 9, 23, 232]),
+    ])
+    def test_bubble_sort(self, input, expected):
+        assert bubble_sort(input) == expected

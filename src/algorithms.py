@@ -84,3 +84,24 @@ def get_min(values: List[int]) -> Tuple[int, List[int]]:
             min_index = i
     unsorted_list.pop(min_index)
     return values[min_index], unsorted_list
+
+
+def bubble_sort(values: List[int]) -> List[int]:
+    """
+    The bubble sort algorithm sorts the elements by continuously swapping the elements when they are in the wrong order
+    Complexity: O(nˆ2)
+    """
+    swap = True
+
+    while swap is True:
+        swap = False
+        for i, value in enumerate(values):
+            if i == len(values) - 1:
+                break
+            if value > values[i + 1]:
+                temp = values[i]
+                values[i] = values[i + 1]
+                values[i + 1] = temp
+                swap = True
+
+    return values
