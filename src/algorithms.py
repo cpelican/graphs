@@ -22,6 +22,8 @@
 #  clear explanation here: https://stackabuse.com/levenshtein-distance-and-text-similarity-in-python/
 from typing import List, Tuple
 
+from src.heap import Heap
+
 
 def levenshtein(str_1: str, str_2: str) -> int:
     """
@@ -105,3 +107,15 @@ def bubble_sort(values: List[int]) -> List[int]:
                 swap = True
 
     return values
+
+
+def heap_sort(values: List[int]) -> List[int]:
+    heap = Heap()
+    sorted_values = []
+    for value in values:
+        heap.insert(f'node_{value}', value)
+    while len(sorted_values) < len(values):
+        name, value = heap.pop_min()
+        sorted_values.append(value)
+
+    return sorted_values
