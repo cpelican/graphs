@@ -119,3 +119,40 @@ def heap_sort(values: List[int]) -> List[int]:
         sorted_values.append(value)
 
     return sorted_values
+
+
+def merge(left_list: List[int], right_list: List[int]) -> List[int]:
+    i = 0
+    j = 0
+    merged_list = []
+
+    while True:
+        if i == len(left_list):
+            merged_list += right_list[j:]
+            break
+        if j == len(right_list):
+            merged_list += left_list[i:]
+            break
+        if left_list[i] < right_list[j]:
+            merged_list.append(left_list[i])
+            i += 1
+        else:
+            merged_list.append(right_list[j])
+            j += 1
+
+    return merged_list
+
+
+def merge_sort(values: List[int]) -> List[int]:
+    if len(values) < 2:
+        return values
+    middle_i = len(values) // 2
+
+    left = values[:middle_i]
+    right = values[middle_i:]
+
+    sorted_left = merge_sort(left)
+    sorted_right = merge_sort(right)
+
+    return merge(sorted_left, sorted_right)
+

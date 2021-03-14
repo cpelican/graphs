@@ -1,6 +1,6 @@
 import pytest
 
-from src.algorithms import levenshtein, selection_sort, bubble_sort, heap_sort
+from src.algorithms import levenshtein, selection_sort, bubble_sort, heap_sort, merge, merge_sort
 
 
 class TestAlgorithms:
@@ -34,3 +34,15 @@ class TestAlgorithms:
     ])
     def test_bubble_sort(self, input, expected):
         assert heap_sort(input) == expected
+
+    @pytest.mark.parametrize('left, right, expected', [
+        ([1, 3, 17], [0, 10, 11, 14, 15], [0, 1, 3, 10, 11, 14, 15, 17]),
+    ])
+    def test_merge_helper(self, left, right, expected):
+        assert merge(left, right) == expected
+
+    @pytest.mark.parametrize('input, expected', [
+        ([9, 8, 23, 0, 0, 232, 1], [0, 0, 1, 8, 9, 23, 232]),
+    ])
+    def test_merge_sort(self, input, expected):
+        assert merge_sort(input) == expected
