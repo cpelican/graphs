@@ -5,6 +5,4 @@ run `python -m src.graph`
 run `py.test -s file_name`
 
 ## TODOS
-- [ ] test the heap
 - [ ] tries
-- [ ] O(log n) sorts
