@@ -51,13 +51,13 @@ let trie = new Trie();
 test('creates correctly the  trie', () => {
     trie.insert('bimbambum');
 
-    expect(JSON.stringify(trie.getNodes())).toMatchSnapshot();
+    expect(trie.getNodes()).toMatchSnapshot();
 });
 
 test('creates correctly the  trie', () => {
     trie.insert('bimbeta');
 
-    expect(JSON.stringify(trie.getNodes())).toMatchSnapshot();
+    expect(trie.getNodes()).toMatchSnapshot();
 });
 
 test('gets the suggestions', () => {

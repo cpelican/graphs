@@ -1,44 +1,40 @@
-
-interface LetterNode {
-    [key: string]: {
-        children?: LetterNode;
-        word?: string;
-    };
-}
+type MapLetterNodeValue = {children: MapLetterNode, word?: string}
+type MapLetterNode = Map<string, MapLetterNodeValue>
 
 export class Trie {
-    private nodes: LetterNode = {};
+    private nodes: MapLetterNode = new Map();
 
-    public getNodes(): LetterNode {
+    public getNodes(): MapLetterNode {
         return this.nodes;
     }
 
     public insert(
         remainingLetters: string,
         previousWord: string = '',
-        childrenNodes: LetterNode = this.nodes,
-    ): LetterNode {
+        childrenNodes: MapLetterNode = this.nodes,
+    ): MapLetterNode {
         if (remainingLetters.length === 0) {
             return this.nodes;
         }
         let nextRemainingLetters = remainingLetters.slice(1, remainingLetters.length),
             firstLetter = remainingLetters[0],
             currentWord: string = previousWord + firstLetter,
-            emptyNode = {children: {}};
-        childrenNodes[firstLetter] = childrenNodes[firstLetter] ?? emptyNode;
-        if (nextRemainingLetters.length == 0) {
-            childrenNodes[firstLetter].word = currentWord
-        }
-        return this.insert(nextRemainingLetters, currentWord, childrenNodes[firstLetter].children);
-    }
+            childNode: MapLetterNodeValue = childrenNodes.get(firstLetter) ?? {children: new Map()};
 
+        if (nextRemainingLetters.length == 0) {
+            childNode.word = currentWord;
+        }
+        childrenNodes.set(firstLetter, childNode);
+
+        return this.insert(nextRemainingLetters, currentWord, childrenNodes?.get(firstLetter)?.children as MapLetterNode);
+    }
     public getSuggestions(suggestion: string): Set<string> {
         let currentLetterIndex = 0,
-            currentNode: LetterNode = this.nodes;
+            currentNode: MapLetterNode = this.nodes;
         // get the suggestions tree
         while(currentLetterIndex !== suggestion.length) {
             let currentLetter = suggestion[currentLetterIndex];
-            currentNode = currentNode[currentLetter].children as LetterNode;
+            currentNode = currentNode?.get(currentLetter)?.children as MapLetterNode;
             currentLetterIndex += 1;
 
             if (currentNode == null) {
@@ -47,20 +43,19 @@ export class Trie {
         }
 
         // build the suggestions
-        return this.searchTree(currentNode);
+        return this.searchSuggestions(currentNode);
     }
 
-    public searchTree(nodes: LetterNode, suggestions: Set<string> = new Set()): Set<string> {
+    public searchSuggestions(nodes: MapLetterNode, suggestions: Set<string> = new Set()): Set<string> {
         if (nodes == null) {
             return suggestions;
         }
-        Object.keys(nodes).forEach((letter: string) => {
-            let currentNode = nodes[letter];
+        for (let currentNode of nodes.values()) {
             if (currentNode.word != null) {
                 suggestions.add(currentNode.word as string);
             }
-            this.searchTree(currentNode.children as LetterNode, suggestions);
-        });
+            this.searchSuggestions(currentNode.children as MapLetterNode, suggestions);
+        }
 
         return suggestions;
     }

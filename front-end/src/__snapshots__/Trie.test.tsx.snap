@@ -1,8 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`creates correctly the  trie 1`] = `"{\\"b\\":{\\"children\\":{\\"i\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"a\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"u\\":{\\"children\\":{\\"m\\":{\\"children\\":{},\\"word\\":\\"bimbambum\\"}}}}}}}}}}}}}}}}}}"`;
+exports[`creates correctly the  trie 1`] = `
+Map {
+  "b" => Object {
+    "children": Map {
+      "i" => Object {
+        "children": Map {
+          "m" => Object {
+            "children": Map {
+              "b" => Object {
+                "children": Map {
+                  "a" => Object {
+                    "children": Map {
+                      "m" => Object {
+                        "children": Map {
+                          "b" => Object {
+                            "children": Map {
+                              "u" => Object {
+                                "children": Map {
+                                  "m" => Object {
+                                    "children": Map {},
+                                    "word": "bimbambum",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
 
-exports[`creates correctly the  trie 2`] = `"{\\"b\\":{\\"children\\":{\\"i\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"a\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"u\\":{\\"children\\":{\\"m\\":{\\"children\\":{},\\"word\\":\\"bimbambum\\"}}}}}}}}},\\"e\\":{\\"children\\":{\\"t\\":{\\"children\\":{\\"a\\":{\\"children\\":{},\\"word\\":\\"bimbeta\\"}}}}}}}}}}}}}}"`;
+exports[`creates correctly the  trie 2`] = `
+Map {
+  "b" => Object {
+    "children": Map {
+      "i" => Object {
+        "children": Map {
+          "m" => Object {
+            "children": Map {
+              "b" => Object {
+                "children": Map {
+                  "a" => Object {
+                    "children": Map {
+                      "m" => Object {
+                        "children": Map {
+                          "b" => Object {
+                            "children": Map {
+                              "u" => Object {
+                                "children": Map {
+                                  "m" => Object {
+                                    "children": Map {},
+                                    "word": "bimbambum",
+                                  },
+                                },
+                              },
+                            },
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "e" => Object {
+                    "children": Map {
+                      "t" => Object {
+                        "children": Map {
+                          "a" => Object {
+                            "children": Map {},
+                            "word": "bimbeta",
+                          },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+}
+`;
 
 exports[`gets the suggestions 1`] = `
 Set {
