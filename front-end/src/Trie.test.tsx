@@ -63,4 +63,3 @@ test('creates correctly the  trie', () => {
 test('gets the suggestions', () => {
     expect(trie.getSuggestions('bim')).toMatchSnapshot();
 });
-

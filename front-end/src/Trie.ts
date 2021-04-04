@@ -1,5 +1,5 @@
-type MapLetterNodeValue = {children: MapLetterNode, word?: string}
-type MapLetterNode = Map<string, MapLetterNodeValue>
+type MapLetterNodeValue = {children: MapLetterNode; word?: string};
+type MapLetterNode = Map<string, MapLetterNodeValue>;
 
 export class Trie {
     private nodes: MapLetterNode = new Map();
@@ -26,13 +26,17 @@ export class Trie {
         }
         childrenNodes.set(firstLetter, childNode);
 
-        return this.insert(nextRemainingLetters, currentWord, childrenNodes?.get(firstLetter)?.children as MapLetterNode);
+        return this.insert(
+            nextRemainingLetters,
+            currentWord,
+            childrenNodes?.get(firstLetter)?.children as MapLetterNode,
+        );
     }
     public getSuggestions(suggestion: string): Set<string> {
         let currentLetterIndex = 0,
             currentNode: MapLetterNode = this.nodes;
         // get the suggestions tree
-        while(currentLetterIndex !== suggestion.length) {
+        while (currentLetterIndex !== suggestion.length) {
             let currentLetter = suggestion[currentLetterIndex];
             currentNode = currentNode?.get(currentLetter)?.children as MapLetterNode;
             currentLetterIndex += 1;
