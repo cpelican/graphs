@@ -3,28 +3,20 @@ import {Trie} from './Trie';
 
 // let exampleTrie = {
 //     b: {
-//         word: 'b',
 //         children: {
 //             i: {
-//                 word: 'bi',
 //                 children: {
 //                     m: {
-//                         word: 'bim',
 //                         children: {
 //                             b: {
-//                                 word: 'bimb',
 //                                 children: {
 //                                     a: {
-//                                         word: 'bimba',
 //                                         children: {
 //                                             m: {
-//                                                 word: 'bimbam',
 //                                                 children: {
 //                                                     b: {
-//                                                         word: 'bimbamb',
 //                                                         children: {
 //                                                             u: {
-//                                                                 word: 'bimbambu',
 //                                                                 children: {
 //                                                                     m: {
 //                                                                         word: 'bimbambum',
