@@ -6,6 +6,7 @@ function App() {
     let trie = new Trie();
     trie.insert('bimbambum');
     trie.insert('bimbeta');
+    trie.getSuggestions('bim');
 
     return <div className='App'>yoloo</div>;
 }

@@ -1,56 +1,66 @@
 import React from 'react';
 import {Trie} from './Trie';
 
+// let exampleTrie = {
+//     b: {
+//         word: 'b',
+//         children: {
+//             i: {
+//                 word: 'bi',
+//                 children: {
+//                     m: {
+//                         word: 'bim',
+//                         children: {
+//                             b: {
+//                                 word: 'bimb',
+//                                 children: {
+//                                     a: {
+//                                         word: 'bimba',
+//                                         children: {
+//                                             m: {
+//                                                 word: 'bimbam',
+//                                                 children: {
+//                                                     b: {
+//                                                         word: 'bimbamb',
+//                                                         children: {
+//                                                             u: {
+//                                                                 word: 'bimbambu',
+//                                                                 children: {
+//                                                                     m: {
+//                                                                         word: 'bimbambum',
+//                                                                     },
+//                                                                 },
+//                                                             },
+//                                                         },
+//                                                     },
+//                                                 },
+//                                             },
+//                                         },
+//                                     },
+//                                 },
+//                             },
+//                         },
+//                     },
+//                 },
+//             },
+//         },
+//     },
+// };
 let trie = new Trie();
-test('creates correctly the trie', () => {
+
+test('creates correctly the  trie', () => {
     trie.insert('bimbambum');
 
-    expect(trie.getNodes()).toEqual({
-        b: {
-            i: {
-                m: {
-                    b: {
-                        a: {
-                            m: {
-                                b: {
-                                    u: {
-                                        m: {},
-                                    },
-                                },
-                            },
-                        },
-                    },
-                },
-            },
-        },
-    });
+    expect(JSON.stringify(trie.getNodes())).toMatchSnapshot();
 });
 
-test('adding an other word does not deletes the first', () => {
+test('creates correctly the  trie', () => {
     trie.insert('bimbeta');
 
-    expect(trie.getNodes()).toEqual({
-        b: {
-            i: {
-                m: {
-                    b: {
-                        a: {
-                            m: {
-                                b: {
-                                    u: {
-                                        m: {},
-                                    },
-                                },
-                            },
-                        },
-                        e: {
-                            t: {
-                                a: {},
-                            },
-                        },
-                    },
-                },
-            },
-        },
-    });
+    expect(JSON.stringify(trie.getNodes())).toMatchSnapshot();
 });
+
+test('gets the suggestions', () => {
+    expect(trie.getSuggestions('bim')).toMatchSnapshot();
+});
+

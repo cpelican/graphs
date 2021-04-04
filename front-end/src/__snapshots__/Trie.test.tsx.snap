@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`creates correctly the  trie 1`] = `"{\\"b\\":{\\"children\\":{\\"i\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"a\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"u\\":{\\"children\\":{\\"m\\":{\\"children\\":{},\\"word\\":\\"bimbambum\\"}}}}}}}}}}}}}}}}}}"`;
+
+exports[`creates correctly the  trie 2`] = `"{\\"b\\":{\\"children\\":{\\"i\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"a\\":{\\"children\\":{\\"m\\":{\\"children\\":{\\"b\\":{\\"children\\":{\\"u\\":{\\"children\\":{\\"m\\":{\\"children\\":{},\\"word\\":\\"bimbambum\\"}}}}}}}}},\\"e\\":{\\"children\\":{\\"t\\":{\\"children\\":{\\"a\\":{\\"children\\":{},\\"word\\":\\"bimbeta\\"}}}}}}}}}}}}}}"`;
+
+exports[`gets the suggestions 1`] = `
+Set {
+  "bimbambum",
+  "bimbeta",
+}
+`;
