@@ -21,7 +21,7 @@ export class Trie {
             currentWord: string = previousWord + firstLetter,
             childNode: MapLetterNodeValue = childrenNodes.get(firstLetter) ?? {children: new Map()};
 
-        if (nextRemainingLetters.length == 0) {
+        if (nextRemainingLetters.length === 0) {
             childNode.word = currentWord;
         }
         childrenNodes.set(firstLetter, childNode);
