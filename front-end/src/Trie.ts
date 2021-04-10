@@ -17,7 +17,7 @@ export class Trie {
             return this.nodes;
         }
         let nextRemainingLetters = remainingLetters.slice(1, remainingLetters.length),
-            firstLetter = remainingLetters[0],
+            firstLetter = remainingLetters[0].toLowerCase(),
             currentWord: string = previousWord + firstLetter,
             childNode: MapLetterNodeValue = childrenNodes.get(firstLetter) ?? {children: new Map()};
 
@@ -32,6 +32,7 @@ export class Trie {
             childrenNodes?.get(firstLetter)?.children as MapLetterNode,
         );
     }
+
     public getSuggestions(suggestion: string): Set<string> {
         let currentLetterIndex = 0,
             currentNode: MapLetterNode = this.nodes;
@@ -50,7 +51,7 @@ export class Trie {
         return this.searchSuggestions(currentNode);
     }
 
-    public searchSuggestions(nodes: MapLetterNode, suggestions: Set<string> = new Set()): Set<string> {
+    private searchSuggestions(nodes: MapLetterNode, suggestions: Set<string> = new Set()): Set<string> {
         if (nodes == null) {
             return suggestions;
         }
